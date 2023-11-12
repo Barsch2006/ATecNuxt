@@ -1,0 +1,70 @@
+.login-wrapper {
+    background-image: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 1) 100%
+        ),
+        url("/img/other/GymnasiumRiedberg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: calc(100svh);
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.loginform {
+    max-width: 800px;
+    background-color: #000917;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.loginform.small {
+    width: 400px;
+
+    grid-template-columns: 1fr;
+}
+
+.loginform > * {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.loginform > * > * {
+    width: 100%;
+}
+
+button[type="submit"] {
+    margin-top: 10px;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .loginform {
+        position: relative;
+        right: 0;
+        top: 0;
+        translate: 0 50%;
+
+        transform: none;
+        display: flex;
+        flex-direction: column;
+
+        gap: 50px;
+    }
+
+    .only-on-pc {
+        display: none;
+    }
+}
