@@ -4,6 +4,7 @@ export default {
     data() {
         return {
             show_nav_drawer_button: false,
+            authenticated: false,
         };
     },
     methods: {
@@ -15,6 +16,9 @@ export default {
             if (res.status.value == "success") {
                 this.$router.push("/");
             }
+        },
+        setAuth(auth: boolean) {
+            this.authenticated = auth;
         },
     },
     mounted() {
@@ -33,11 +37,15 @@ export default {
 
             <VSpacer />
 
-            <VIcon style="margin-right: 14px" icon="mdi-logout" @click="logout" />
+            <VIcon
+                style="margin-right: 14px"
+                :icon="authenticated ? 'mdi-logout' : 'mdi-login'"
+                @click="logout"
+            />
         </VAppBar>
 
         <VNavigationDrawer v-model="show_nav_drawer_button" class="navigation__drawer">
-            <NavDrawerContent />
+            <NavDrawerContent @auth="setAuth" />
         </VNavigationDrawer>
 
         <VMain>
@@ -45,6 +53,18 @@ export default {
                 <slot />
             </div>
         </VMain>
+
+        <VFooter
+            color="primary"
+            style="
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+            "
+        >
+            <NuxtLink style="color: #fff" to="/contact">Kontakt</NuxtLink>
+        </VFooter>
     </VApp>
 </template>
 

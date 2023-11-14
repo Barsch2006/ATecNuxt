@@ -32,6 +32,7 @@ export default {
 
         this.auth = authenticated;
         this.permissions = user.permissions ?? {};
+        this.$emit("auth", authenticated);
     },
 };
 </script>
