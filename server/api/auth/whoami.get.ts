@@ -5,6 +5,7 @@ type ResPermissions = {
     MANAGE_USERS?: boolean;
     CHANGE_PWD?: boolean;
     VIEW_CONTACTS?: boolean;
+    MANAGE_MATERIAL?: boolean;
 };
 
 export default eventHandler(async (event) => {
@@ -17,6 +18,9 @@ export default eventHandler(async (event) => {
             CHANGE_PWD: event.context.auth.user.hasPermission(Permissions.CHANGE_PWD),
             VIEW_CONTACTS: event.context.auth.user.hasPermission(
                 Permissions.VIEW_CONTACTS,
+            ),
+            MANAGE_MATERIAL: event.context.auth.user.hasPermission(
+                Permissions.MANAGE_MATERIAL,
             ),
         };
     }

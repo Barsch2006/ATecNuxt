@@ -3,6 +3,7 @@ enum Permissions {
     MANAGE_USERS = 1 << 1,
     CHANGE_PWD = 1 << 2,
     VIEW_CONTACTS = 1 << 3,
+    MANAGE_MATERIAL = 1 << 4,
 }
 
 class PermissionManager {
