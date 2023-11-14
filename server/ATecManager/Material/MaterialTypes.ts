@@ -64,4 +64,5 @@ export {
     OwnerType,
     MaterialItemType,
     MaterialItemClassification,
+    DefectTypes,
 };
