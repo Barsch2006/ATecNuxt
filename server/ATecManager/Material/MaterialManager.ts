@@ -64,4 +64,4 @@ class MaterialManager {
     }
 }
 
-export default { MaterialManager };
+export default MaterialManager;
