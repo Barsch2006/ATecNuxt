@@ -39,6 +39,30 @@ interface IEvent {
 }
 
 class Event implements WithId<IEvent> {
+    public static async getEvent(id: ObjectId): Promise<MethodResult<Event>> {
+        const atec = ATecManager.instance ?? (await ATecManager.init(useRuntimeConfig()));
+        const eventCollection = atec.database.collection<IEvent>("events");
+        const result = await eventCollection.findOne({ _id: id });
+        if (result) {
+            return [new Event(result), null];
+        } else {
+            return [undefined, ErrorTypes.NOT_FOUND];
+        }
+    }
+
+    public static async getEvents(): Promise<MethodResult<Event[]>> {
+        const atec = ATecManager.instance ?? (await ATecManager.init(useRuntimeConfig()));
+        const eventCollection = atec.database.collection<IEvent>("events");
+        const result = await eventCollection.find().toArray();
+        // sort the result by start date
+        result.sort((a, b) => a.general.start - b.general.start);
+        if (result) {
+            return [result.map((event) => new Event(event)), null];
+        } else {
+            return [undefined, ErrorTypes.NOT_FOUND];
+        }
+    }
+
     public static async createEvent(event: IEvent): Promise<MethodResult<boolean>> {
         const atec = ATecManager.instance ?? (await ATecManager.init(useRuntimeConfig()));
         const eventCollection = atec.database.collection<IEvent>("events");
