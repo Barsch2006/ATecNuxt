@@ -1,4 +1,6 @@
 import { ObjectId, WithId } from "mongodb";
+import ATecManager from "../ATecManager";
+import MethodResult, { ErrorTypes } from "../MethodResult";
 
 interface IEquipment {
     type: string;
@@ -37,6 +39,17 @@ interface IEvent {
 }
 
 class Event implements WithId<IEvent> {
+    public static async createEvent(event: IEvent): Promise<MethodResult<boolean>> {
+        const atec = ATecManager.instance ?? (await ATecManager.init(useRuntimeConfig()));
+        const eventCollection = atec.database.collection<IEvent>("events");
+        const result = await eventCollection.insertOne(event);
+        if (result.acknowledged) {
+            return [true, null];
+        } else {
+            return [undefined, ErrorTypes.FAILED];
+        }
+    }
+
     _id: ObjectId;
     veranstalter: {
         userid: ObjectId;
