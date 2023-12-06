@@ -40,6 +40,9 @@ interface IEvent {
 }
 
 export default {
+    components: {
+        FullCalendar,
+    },
     async beforeCreate() {
         const { user } = await checkAuth({
             throwErrorOnNotAuthenticated: true,
@@ -69,11 +72,11 @@ export default {
                         },
                     };
                 }),
-                eventClick: (info: any) => {
+                eventClick: async (info: any) => {
                     const objectId = info.event.extendedProps.objectId;
-                    //   this.openEvent(objectId);
+                    await navigateTo(`/events/${objectId}`);
                 },
-                height: "50svh",
+                height: window.innerHeight > window.innerWidth ? "60svh" : "80svh",
             };
         },
     },
@@ -81,7 +84,7 @@ export default {
 </script>
 
 <template>
-    <FullCalendar :options="fullCalenderOptions()" />
+    <FullCalendar :options="fullCalenderOptions" />
 </template>
 
 <style scoped></style>

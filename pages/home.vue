@@ -14,6 +14,13 @@ export default {
             navigateTo("/");
         }
 
+        if (user.permissions?.MANAGE_EVENTS) {
+            this.apps.push({
+                name: "Veranstaltungen",
+                link: "/events",
+            });
+        }
+
         if (user.permissions?.CHANGE_PWD) {
             this.apps.push({
                 name: "Sicherheitseinstellungen",

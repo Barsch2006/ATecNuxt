@@ -4,6 +4,7 @@ type ResPermissions = {
     MANAGE_USERS?: boolean;
     CHANGE_PWD?: boolean;
     VIEW_CONTACTS?: boolean;
+    MANAGE_EVENTS?: boolean;
 };
 
 export default {
@@ -46,6 +47,10 @@ export default {
         <NuxtLink v-if="auth" to="/home">
             <VIcon>mdi-home</VIcon>
             Home
+        </NuxtLink>
+        <NuxtLink v-if="auth && permissions.MANAGE_EVENTS" to="/events">
+            <VIcon>mdi-calendar</VIcon>
+            Veranstaltungen
         </NuxtLink>
         <NuxtLink v-if="auth && permissions.CHANGE_PWD" to="/settings/security">
             <VIcon>mdi-shield-account</VIcon>
