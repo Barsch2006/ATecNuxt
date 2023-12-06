@@ -15,7 +15,7 @@ type ResPermissions = {
     MANAGE_USERS?: boolean;
     CHANGE_PWD?: boolean;
     VIEW_CONTACTS?: boolean;
-    MANAGE_MATERIAL?: boolean;
+    MANAGE_EVENTS?: boolean;
 };
 
 export default async function checkAuth(options: {

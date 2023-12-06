@@ -27,6 +27,7 @@ export default {
                     MANAGE_USERS: boolean;
                     CHANGE_PWD: boolean;
                     VIEW_CONTACTS: boolean;
+                    MANAGE_EVENTS: boolean;
                 };
             },
             error: {
@@ -45,6 +46,7 @@ export default {
                     MANAGE_USERS: boolean;
                     CHANGE_PWD: boolean;
                     VIEW_CONTACTS: boolean;
+                    MANAGE_EVENTS: boolean;
                 };
             }>(),
             rules: {
@@ -77,6 +79,7 @@ export default {
                         MANAGE_USERS: boolean;
                         CHANGE_PWD: boolean;
                         VIEW_CONTACTS: boolean;
+                        MANAGE_EVENTS: boolean;
                     };
                 }>;
 
