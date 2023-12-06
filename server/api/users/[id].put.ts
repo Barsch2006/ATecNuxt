@@ -90,6 +90,11 @@ export default defineEventHandler(async (event) => {
     } else {
         user.denyPermission(Permissions.VIEW_CONTACTS);
     }
+    if (permissions.MANAGE_EVENTS) {
+        user.allowPermission(Permissions.MANAGE_EVENTS);
+    } else {
+        user.denyPermission(Permissions.MANAGE_EVENTS);
+    }
 
     return {
         statusCode: 200,

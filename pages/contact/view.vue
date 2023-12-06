@@ -69,8 +69,10 @@ export default {
 <template>
     <VExpansionPanels>
         <VExpansionPanel v-for="(c, i) in contacts" :key="c.id">
-            <VExpansionPanelTitle>
-                {{ new Date(c.createdAt).toLocaleDateString() }} - {{ c.subject }}
+            <VExpansionPanelTitle
+                :style="`color: ${c.status === 'pending' ? 'orange' : 'white'}`"
+            >
+                {{ new Date(c.createdAt).toLocaleDateString() }} - {{ c.author }}
             </VExpansionPanelTitle>
             <VExpansionPanelText>
                 <VTextField v-model="c.author" label="Gesendet von: " readonly />
@@ -78,7 +80,7 @@ export default {
                 <VTextarea label="Nachricht" v-model="c.content" readonly />
                 <VBtn :href="`mailto://${c.email}`" color="primary"
                     >{{ c.status === "pending" ? "" : "Nochmal" }} Antworten</VBtn
-                >`"
+                >
                 <VBtn
                     @click="toggleReplied(i)"
                     :color="c.status === 'pending' ? 'success' : 'warning'"

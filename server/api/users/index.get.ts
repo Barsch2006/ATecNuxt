@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
                 MANAGE_USERS: user.hasPermission(Permissions.MANAGE_USERS),
                 CHANGE_PWD: user.hasPermission(Permissions.CHANGE_PWD),
                 VIEW_CONTACTS: user.hasPermission(Permissions.VIEW_CONTACTS),
+                MANAGE_EVENTS: user.hasPermission(Permissions.MANAGE_EVENTS),
             },
         };
     });

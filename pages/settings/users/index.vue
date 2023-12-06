@@ -221,6 +221,11 @@ export default {
                         label="Kann Kontaktanfragen ansehen"
                         dense
                     />
+                    <VCheckbox
+                        v-model="viewed_user.permissions.MANAGE_EVENTS"
+                        label="Kann Veranstaltungen verwalten und sich für diese eintragen"
+                        dense
+                    />
                 </VCardText>
                 <VCardText>
                     <h2>Passwort und Sicherheit</h2>
